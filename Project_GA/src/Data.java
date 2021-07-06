@@ -13,8 +13,8 @@ public class Data {
 
 	public static void main(String[] args) {
 		
-		//ArrayList<Double> data = createData(25);
-		//System.out.println(data);
+		ArrayList<Double> data = createData(10);
+		System.out.println(data);
 		
 		//writeData(data);
 		
@@ -23,13 +23,13 @@ public class Data {
 	public static ArrayList<Double> createData (int n) {
 		
 		Random r = new Random();
-		int min = 1;
-		int max = 25;
+		int min = 1; //change this value for a specific range
+		int max = 25; //change this value for a specific range
 		DecimalFormat df = new DecimalFormat("#.###");
 		ArrayList<Double> data = new ArrayList<Double>(n);
 		
 		for (int i=0; i<n; i++) {
-			double rd = (min+(max-min))*r.nextDouble();
+			double rd = (max-min)*r.nextDouble()+min;
 			rd = Double.parseDouble(df.format(rd));
 			//System.out.println(rd);
 			data.add(rd);
