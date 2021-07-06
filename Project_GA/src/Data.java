@@ -90,5 +90,33 @@ public class Data {
 		
 		return data;
 	}
+	
+	
+public static void writeRes (ArrayList<ArrayList<Double>> data, int gen) {
+		
+		String fileName = "C:\\Users\\zairu\\Sheffield Hallam University\\Sept 21-22\\ADS\\Assignment Materials\\Gen_"+gen+".csv"; 
+		
+		
+		try {
+			
+			FileWriter fw = new FileWriter(fileName);
+			BufferedWriter bw = new BufferedWriter(fw);
+			
+			for (int i=0; i<data.size(); i++) {
+				for (int j=0; j<data.get(i).size(); j++) {
+					bw.write(data.get(i).get(j).toString());
+					bw.write(",");
+				}
+				bw.write("\n");
+			}
+			
+			bw.close();
+			fw.close();
+			
+		}
+		catch(Exception e) {
+			System.err.println("Error writing data to a file");
+		}
+	}
 
 }
