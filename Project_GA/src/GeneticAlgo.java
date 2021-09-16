@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.Hashtable;
 import java.util.Random;
 
+import ScalesProblem.Individual;
+
 public class GeneticAlgo {
 	
 	
@@ -139,7 +141,28 @@ public void mutation (Individual parent1, int genSize) {
 
 	public void newPop (ArrayList<Double> data) {
 		
+		Hashtable<Double, Individual> newPop = new Hashtable<Double, Individual>(); //use hashtable to store key:value (fitness value:gene)
+		ArrayList<Double> fitList = new ArrayList<Double>(); //use arraylist to store the fitnesses so that we can sort the element
 		
+		//adding all candidates into a new pool of population
+		for (int i=0; i<pop.length; i++) {
+			newPop.put(pop[i].calFitness(data), pop[i]);
+			fitList.add(pop[i].calFitness(data));
+		}
+		
+		//adding the new children and the mutate into a new pool of population
+		newPop.put(child1.calFitness(data),child1);
+		fitList.add(child1.calFitness(data));
+		newPop.put(child2.calFitness(data),child2);
+		fitList.add(child2.calFitness(data));
+		newPop.put(mutate.calFitness(data),mutate);
+		fitList.add(mutate.calFitness(data));
+		
+		Collections.sort(fitList);//sort the candidates fitness values
+		
+		//getting the first 10 candidates for the next generation
+		for (int i=0; i<pop.length; i++)
+			pop[i]=newPop.get(fitList.get(i));
 		
 		
 	}
