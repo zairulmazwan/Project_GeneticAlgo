@@ -74,7 +74,11 @@ class Individual {
 	
 	public Individual copyIndividual(Individual ind, int genSize) {
 		
-		
+		Individual res=new Individual(genSize);
+		for (int i=0; i<ind.gene.length; i++) {
+			res.gene[i]=ind.gene[i];
+		}
+		return res;
 		
 	}
 	
