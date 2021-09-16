@@ -62,6 +62,7 @@ class Individual {
 	double fitness=0;
 	int [] gene=null;
 	
+	//Initiate a new individual with a random genetic information
 	public Individual (int n) {
 		
 		Random r = new Random ();
@@ -88,7 +89,9 @@ class Individual {
 	}
 	
 	public void printGene() {
-		
+		for (int i=0; i<gene.length; i++) {
+			System.out.print(gene[i]+" ");
+		}
 	}
 }
 
@@ -107,13 +110,19 @@ class Population {
 	
 	public void initialPop (int popSize, int n) {
 		
+		pop = new Individual[popSize];
+		for (int i=0; i<popSize; i++) {
+			this.pop[i] = new Individual(n); //create an individual randomly
+		}
 	
 	}
 	
 	public void printPopulation () {
-		
-		
-		
+		System.out.println("\nPopulation :");
+		for (int i=0; i<pop.length; i++) {
+			pop[i].printGene();
+			System.out.println();
+		}
 	}
 	
 	public void getPopFitness (ArrayList<Double> data) {
@@ -135,7 +144,7 @@ class Population {
 public void crossOver(int genSize) {
 		
 		
-	}
+}
 
 public void mutation (Individual parent1, int genSize) {
 	
