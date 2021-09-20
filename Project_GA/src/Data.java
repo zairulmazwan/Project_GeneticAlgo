@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
+import ScalesProblem.Population;
+
 
 public class Data {
 
@@ -119,4 +121,32 @@ public static void writeRes (ArrayList<ArrayList<Double>> data, int gen) {
 		}
 	}
 
+
+public static void writeChromosomes (Population chromosomes) {
+	
+		String filename = "C:\\Users\\zairu\\Sheffield Hallam University\\Sept 21-22\\ADS\\Assignment Materials\\ChromosomesRes.txt";
+		
+		try {
+			FileWriter  fw = new FileWriter(filename);
+			BufferedWriter bw = new BufferedWriter(fw);
+			
+			for (int i=0; i<chromosomes.pop.length; i++) {
+				//bw.write(chromosomes[i].gene.toString());
+				for (int j=0; j<chromosomes.pop[i].gene.length; j++) {
+					int gene = chromosomes.pop[i].gene[j];
+					bw.write(Integer.toString(gene));
+					bw.write(" ");
+					System.out.print(gene);
+				}
+				System.out.println();
+				bw.write("\n");
+			}
+			
+			bw.close();
+			fw.close();
+		}
+		catch(Exception e) {
+			System.err.println("Error writing data to a file");
+			}
+	}
 }
